@@ -1,7 +1,9 @@
 # Unique-Identification-System
 
-Execute mvn jetty:run and hit the URL http://localhost:8080/UniqueIdentificationSystem/services/person to see list of persons added.
+Execute mvn jetty:run  
+hit the URL http://localhost:8080/UniqueIdentificationSystem/services/person  
 
 ## TODO
-Add Unit tests for PersonService
-Add Unimplented PUT, DELETE, GET functions for person.
+*Add Unit tests to improve coverage* (IMP)  
+Add JPARepository and db scripts for CRUD operations.  
+Make Angular front end for app.
