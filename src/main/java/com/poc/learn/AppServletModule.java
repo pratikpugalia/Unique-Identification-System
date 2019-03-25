@@ -1,7 +1,7 @@
 package com.poc.learn;
 
 import java.util.Optional;
-
+import com.google.inject.Singleton;
 import com.google.inject.TypeLiteral;
 import com.google.inject.servlet.ServletModule;
 import com.poc.learn.model.Person;
@@ -12,15 +12,15 @@ import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
 
 public class AppServletModule extends ServletModule {
 
-	@Override
-	protected void configureServlets() {
-		bind(new TypeLiteral<DataRepository<Person>>() {
-		}).to(PersonRepository.class);
+  @Override
+  protected void configureServlets() {
+    bind(new TypeLiteral<DataRepository<Person>>() {}).to(PersonRepository.class)
+        .in(Singleton.class);
 
-		Optional.ofNullable(new PackagesResourceConfig("com.poc.learn.rest")).get().getClasses()
-				.forEach(res -> bind(res));
+    Optional.ofNullable(new PackagesResourceConfig("com.poc.learn.rest")).get().getClasses()
+        .forEach(res -> bind(res));
 
-		serve("/services/*").with(GuiceContainer.class);
-	}
+    serve("/services/*").with(GuiceContainer.class);
+  }
 
 }
